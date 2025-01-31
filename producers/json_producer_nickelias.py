@@ -1,14 +1,13 @@
 """
 json_producer_nickelias.py
 
-Stream JSON data to a Kafka topic.
+Stream JSON data to a Kafka topic using Polars for efficient processing.
 
 Example JSON message
-{"message": "I love Python!", "author": "Eve"}
+
 
 Example serialized to Kafka message
-"{\"message\": \"I love Python!\", \"author\": \"Eve\"}"
-
+"
 """
 
 #####################################
@@ -24,6 +23,7 @@ import json  # work with JSON data
 
 # Import external packages
 from dotenv import load_dotenv
+import polars as pl  # Polars for DataFrame operations
 
 # Import functions from local modules
 from utils.utils_producer import (
@@ -72,17 +72,16 @@ DATA_FOLDER: pathlib.Path = PROJECT_ROOT.joinpath("data")
 logger.info(f"Data folder: {DATA_FOLDER}")
 
 # Set the name of the data file
-DATA_FILE: pathlib.Path = DATA_FOLDER.joinpath("buzz.json")
+DATA_FILE: pathlib.Path = DATA_FOLDER.joinpath("workflow_msgs.json")
 logger.info(f"Data file: {DATA_FILE}")
 
 #####################################
-# Message Generator
+# Message Generator with Polars
 #####################################
-
 
 def generate_messages(file_path: pathlib.Path):
     """
-    Read from a JSON file and yield them one by one, continuously.
+    Read from a JSON file and yield them one by one, continuously using Polars.
 
     Args:
         file_path (pathlib.Path): Path to the JSON file.
@@ -93,27 +92,21 @@ def generate_messages(file_path: pathlib.Path):
     while True:
         try:
             logger.info(f"Opening data file in read mode: {DATA_FILE}")
-            with open(DATA_FILE, "r") as json_file:
-                logger.info(f"Reading data from file: {DATA_FILE}")
+            # Load the JSON data using Polars
+            df = pl.read_json(file_path)
 
-                # Load the JSON file as a list of dictionaries
-                json_data: list = json.load(json_file)
+            # Convert Polars DataFrame to list of dictionaries
+            json_data = df.to_dicts()
 
-                if not isinstance(json_data, list):
-                    raise ValueError(
-                        f"Expected a list of JSON objects, got {type(json_data)}."
-                    )
+            logger.info(f"Read {len(json_data)} records from file: {DATA_FILE}")
 
-                # Iterate over the entries in the JSON file
-                for buzz_entry in json_data:
-                    logger.debug(f"Generated JSON: {buzz_entry}")
-                    yield buzz_entry
+            # Yield each record in the data frame as a dictionary
+            for buzz_entry in json_data:
+                logger.debug(f"Generated JSON: {buzz_entry}")
+                yield buzz_entry
         except FileNotFoundError:
             logger.error(f"File not found: {file_path}. Exiting.")
             sys.exit(1)
-        except json.JSONDecodeError as e:
-            logger.error(f"Invalid JSON format in file: {file_path}. Error: {e}")
-            sys.exit(2)
         except Exception as e:
             logger.error(f"Unexpected error in message generation: {e}")
             sys.exit(3)
@@ -122,7 +115,6 @@ def generate_messages(file_path: pathlib.Path):
 #####################################
 # Main Function
 #####################################
-
 
 def main():
     """
