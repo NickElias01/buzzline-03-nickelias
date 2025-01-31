@@ -506,3 +506,494 @@
 2025-01-31 13:58:16.293 | WARNING  | __main__:process_message:108 - Frequent message alert: Alice sent multiple messages in less than 10 seconds.
 2025-01-31 13:58:16.293 | WARNING  | __main__:process_message:114 - ALERT: Message received from important author 'Alice'!
 2025-01-31 13:58:17.289 | INFO     | __main__:main:162 - Sent message to topic 'buzzline_json': {'timestamp': '2025-01-11T18:29:00Z', 'message': 'API rate limiting applied for service A.', 'author': 'Charlie', 'severity': 'medium', 'message_type': 'alert', 'service': 'api-gateway', 'environment': 'staging'}
+2025-01-31 16:08:59.810 | INFO     | utils.utils_logger:<module>:38 - Logging to file: logs\project_log.log
+2025-01-31 16:08:59.813 | INFO     | __main__:main:79 - START producer.
+2025-01-31 16:08:59.814 | INFO     | utils.utils_producer:get_zookeeper_address:57 - Zookeeper address: localhost:2181
+2025-01-31 16:08:59.823 | INFO     | utils.utils_producer:check_zookeeper_service_is_ready:79 - Zookeeper is ready at localhost:2181.
+2025-01-31 16:08:59.824 | INFO     | utils.utils_producer:get_kafka_broker_address:50 - Kafka broker address: localhost:9092
+2025-01-31 16:09:00.157 | INFO     | utils.utils_producer:check_kafka_service_is_ready:98 - Kafka is ready. Brokers: {'throttle_time_ms': 0, 'brokers': [{'node_id': 1001, 'host': 'localhost', 'port': 9092, 'rack': None}], 'cluster_id': 'O6hQlSxUT-ydhFcgvC9AFQ', 'controller_id': 1001}
+2025-01-31 16:09:00.157 | INFO     | __main__:get_kafka_topic:28 - Kafka topic: smoker_csv
+2025-01-31 16:09:00.158 | INFO     | __main__:get_message_interval:34 - Message interval: 5 seconds
+2025-01-31 16:09:00.158 | INFO     | utils.utils_producer:get_kafka_broker_address:50 - Kafka broker address: localhost:9092
+2025-01-31 16:09:00.158 | INFO     | utils.utils_producer:create_kafka_producer:146 - Connecting to Kafka broker at localhost:9092...
+2025-01-31 16:09:00.266 | INFO     | utils.utils_producer:create_kafka_producer:151 - Kafka producer successfully created.
+2025-01-31 16:09:00.267 | INFO     | utils.utils_producer:get_kafka_broker_address:50 - Kafka broker address: localhost:9092
+2025-01-31 16:09:00.597 | INFO     | utils.utils_producer:create_kafka_topic:176 - Creating 'smoker_csv'.
+2025-01-31 16:09:00.702 | INFO     | utils.utils_producer:create_kafka_topic:181 - Topic 'smoker_csv' created successfully.
+2025-01-31 16:09:00.704 | INFO     | __main__:main:96 - Kafka topic 'smoker_csv' is ready.
+2025-01-31 16:09:00.704 | INFO     | __main__:main:101 - Starting message production to topic 'smoker_csv'...
+2025-01-31 16:09:00.705 | INFO     | __main__:generate_messages:52 - Reading data file: C:\Users\drumm\Documents\Streaming Data\buzzline-03-nickelias\data\smoker_temps.csv
+2025-01-31 16:09:00.717 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:00:00', 'temperature': 70.4}
+2025-01-31 16:09:05.720 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:01:00', 'temperature': 70.8}
+2025-01-31 16:09:10.723 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:02:00', 'temperature': 71.2}
+2025-01-31 16:09:15.727 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:03:00', 'temperature': 71.6}
+2025-01-31 16:09:19.758 | INFO     | utils.utils_logger:<module>:38 - Logging to file: logs\project_log.log
+2025-01-31 16:09:19.763 | INFO     | __main__:main:106 - START consumer.
+2025-01-31 16:09:19.763 | INFO     | __main__:get_kafka_topic:16 - Kafka topic: smoker_csv
+2025-01-31 16:09:19.764 | INFO     | __main__:get_kafka_consumer_group_id:22 - Kafka consumer group id: smoker_group
+2025-01-31 16:09:19.764 | INFO     | __main__:get_rolling_window_size:34 - Rolling window size: 10
+2025-01-31 16:09:19.765 | INFO     | __main__:main:112 - Consumer: Topic 'smoker_csv' and group 'smoker_group'...
+2025-01-31 16:09:19.765 | INFO     | __main__:main:113 - Rolling window size: 10
+2025-01-31 16:09:19.766 | INFO     | utils.utils_producer:get_kafka_broker_address:50 - Kafka broker address: localhost:9092
+2025-01-31 16:09:19.767 | INFO     | utils.utils_consumer:create_kafka_consumer:44 - Creating Kafka consumer. Topic='smoker_csv' and group ID='smoker_group'.
+2025-01-31 16:09:19.885 | INFO     | utils.utils_consumer:create_kafka_consumer:59 - Kafka consumer created successfully.
+2025-01-31 16:09:19.885 | INFO     | __main__:main:122 - Polling messages from topic 'smoker_csv'...
+2025-01-31 16:09:20.120 | INFO     | __main__:process_message:79 - Processed JSON message: {'timestamp': '2025-01-01 15:00:00', 'temperature': 70.4}
+2025-01-31 16:09:20.125 | ERROR    | __main__:process_message:102 - Error processing message '{"timestamp": "2025-01-01 15:00:00", "temperature": 70.4}': type String is incompatible with expected type Null
+2025-01-31 16:09:20.127 | INFO     | __main__:process_message:79 - Processed JSON message: {'timestamp': '2025-01-01 15:01:00', 'temperature': 70.8}
+2025-01-31 16:09:20.128 | ERROR    | __main__:process_message:102 - Error processing message '{"timestamp": "2025-01-01 15:01:00", "temperature": 70.8}': type String is incompatible with expected type Null
+2025-01-31 16:09:20.129 | INFO     | __main__:process_message:79 - Processed JSON message: {'timestamp': '2025-01-01 15:02:00', 'temperature': 71.2}
+2025-01-31 16:09:20.130 | ERROR    | __main__:process_message:102 - Error processing message '{"timestamp": "2025-01-01 15:02:00", "temperature": 71.2}': type String is incompatible with expected type Null
+2025-01-31 16:09:20.131 | INFO     | __main__:process_message:79 - Processed JSON message: {'timestamp': '2025-01-01 15:03:00', 'temperature': 71.6}
+2025-01-31 16:09:20.132 | ERROR    | __main__:process_message:102 - Error processing message '{"timestamp": "2025-01-01 15:03:00", "temperature": 71.6}': type String is incompatible with expected type Null
+2025-01-31 16:09:20.730 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:04:00', 'temperature': 72.0}
+2025-01-31 16:09:20.739 | INFO     | __main__:process_message:79 - Processed JSON message: {'timestamp': '2025-01-01 15:04:00', 'temperature': 72.0}
+2025-01-31 16:09:20.739 | ERROR    | __main__:process_message:102 - Error processing message '{"timestamp": "2025-01-01 15:04:00", "temperature": 72.0}': type String is incompatible with expected type Null
+2025-01-31 16:09:25.732 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:05:00', 'temperature': 72.4}
+2025-01-31 16:09:25.737 | INFO     | __main__:process_message:79 - Processed JSON message: {'timestamp': '2025-01-01 15:05:00', 'temperature': 72.4}
+2025-01-31 16:09:25.738 | ERROR    | __main__:process_message:102 - Error processing message '{"timestamp": "2025-01-01 15:05:00", "temperature": 72.4}': type String is incompatible with expected type Null
+2025-01-31 16:09:30.735 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:06:00', 'temperature': 72.8}
+2025-01-31 16:09:30.741 | INFO     | __main__:process_message:79 - Processed JSON message: {'timestamp': '2025-01-01 15:06:00', 'temperature': 72.8}
+2025-01-31 16:09:30.742 | ERROR    | __main__:process_message:102 - Error processing message '{"timestamp": "2025-01-01 15:06:00", "temperature": 72.8}': type String is incompatible with expected type Null
+2025-01-31 16:09:35.740 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:07:00', 'temperature': 73.2}
+2025-01-31 16:09:35.746 | INFO     | __main__:process_message:79 - Processed JSON message: {'timestamp': '2025-01-01 15:07:00', 'temperature': 73.2}
+2025-01-31 16:09:35.747 | ERROR    | __main__:process_message:102 - Error processing message '{"timestamp": "2025-01-01 15:07:00", "temperature": 73.2}': type String is incompatible with expected type Null
+2025-01-31 16:09:40.741 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:08:00', 'temperature': 73.6}
+2025-01-31 16:09:40.748 | INFO     | __main__:process_message:79 - Processed JSON message: {'timestamp': '2025-01-01 15:08:00', 'temperature': 73.6}
+2025-01-31 16:09:40.749 | ERROR    | __main__:process_message:102 - Error processing message '{"timestamp": "2025-01-01 15:08:00", "temperature": 73.6}': type String is incompatible with expected type Null
+2025-01-31 16:09:45.744 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:09:00', 'temperature': 74.0}
+2025-01-31 16:09:45.748 | INFO     | __main__:process_message:79 - Processed JSON message: {'timestamp': '2025-01-01 15:09:00', 'temperature': 74.0}
+2025-01-31 16:09:45.749 | ERROR    | __main__:process_message:102 - Error processing message '{"timestamp": "2025-01-01 15:09:00", "temperature": 74.0}': type String is incompatible with expected type Null
+2025-01-31 16:09:50.748 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:10:00', 'temperature': 74.4}
+2025-01-31 16:09:50.751 | INFO     | __main__:process_message:79 - Processed JSON message: {'timestamp': '2025-01-01 15:10:00', 'temperature': 74.4}
+2025-01-31 16:09:50.752 | ERROR    | __main__:process_message:102 - Error processing message '{"timestamp": "2025-01-01 15:10:00", "temperature": 74.4}': type String is incompatible with expected type Null
+2025-01-31 16:09:55.749 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:11:00', 'temperature': 74.8}
+2025-01-31 16:09:55.754 | INFO     | __main__:process_message:79 - Processed JSON message: {'timestamp': '2025-01-01 15:11:00', 'temperature': 74.8}
+2025-01-31 16:09:55.754 | ERROR    | __main__:process_message:102 - Error processing message '{"timestamp": "2025-01-01 15:11:00", "temperature": 74.8}': type String is incompatible with expected type Null
+2025-01-31 16:10:00.753 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:12:00', 'temperature': 75.2}
+2025-01-31 16:10:00.758 | INFO     | __main__:process_message:79 - Processed JSON message: {'timestamp': '2025-01-01 15:12:00', 'temperature': 75.2}
+2025-01-31 16:10:00.758 | ERROR    | __main__:process_message:102 - Error processing message '{"timestamp": "2025-01-01 15:12:00", "temperature": 75.2}': type String is incompatible with expected type Null
+2025-01-31 16:10:05.757 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:13:00', 'temperature': 75.6}
+2025-01-31 16:10:05.762 | INFO     | __main__:process_message:79 - Processed JSON message: {'timestamp': '2025-01-01 15:13:00', 'temperature': 75.6}
+2025-01-31 16:10:05.763 | ERROR    | __main__:process_message:102 - Error processing message '{"timestamp": "2025-01-01 15:13:00", "temperature": 75.6}': type String is incompatible with expected type Null
+2025-01-31 16:10:10.759 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:14:00', 'temperature': 76.0}
+2025-01-31 16:10:10.762 | INFO     | __main__:process_message:79 - Processed JSON message: {'timestamp': '2025-01-01 15:14:00', 'temperature': 76.0}
+2025-01-31 16:10:10.763 | ERROR    | __main__:process_message:102 - Error processing message '{"timestamp": "2025-01-01 15:14:00", "temperature": 76.0}': type String is incompatible with expected type Null
+2025-01-31 16:10:15.762 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:15:00', 'temperature': 76.4}
+2025-01-31 16:10:15.769 | INFO     | __main__:process_message:79 - Processed JSON message: {'timestamp': '2025-01-01 15:15:00', 'temperature': 76.4}
+2025-01-31 16:10:15.770 | ERROR    | __main__:process_message:102 - Error processing message '{"timestamp": "2025-01-01 15:15:00", "temperature": 76.4}': type String is incompatible with expected type Null
+2025-01-31 16:10:20.765 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:16:00', 'temperature': 76.8}
+2025-01-31 16:10:20.771 | INFO     | __main__:process_message:79 - Processed JSON message: {'timestamp': '2025-01-01 15:16:00', 'temperature': 76.8}
+2025-01-31 16:10:20.772 | ERROR    | __main__:process_message:102 - Error processing message '{"timestamp": "2025-01-01 15:16:00", "temperature": 76.8}': type String is incompatible with expected type Null
+2025-01-31 16:10:25.768 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:17:00', 'temperature': 77.2}
+2025-01-31 16:10:25.776 | INFO     | __main__:process_message:79 - Processed JSON message: {'timestamp': '2025-01-01 15:17:00', 'temperature': 77.2}
+2025-01-31 16:10:25.777 | ERROR    | __main__:process_message:102 - Error processing message '{"timestamp": "2025-01-01 15:17:00", "temperature": 77.2}': type String is incompatible with expected type Null
+2025-01-31 16:10:30.770 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:18:00', 'temperature': 77.6}
+2025-01-31 16:10:30.776 | INFO     | __main__:process_message:79 - Processed JSON message: {'timestamp': '2025-01-01 15:18:00', 'temperature': 77.6}
+2025-01-31 16:10:30.777 | ERROR    | __main__:process_message:102 - Error processing message '{"timestamp": "2025-01-01 15:18:00", "temperature": 77.6}': type String is incompatible with expected type Null
+2025-01-31 16:10:35.774 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:19:00', 'temperature': 78.0}
+2025-01-31 16:10:35.781 | INFO     | __main__:process_message:79 - Processed JSON message: {'timestamp': '2025-01-01 15:19:00', 'temperature': 78.0}
+2025-01-31 16:10:35.782 | ERROR    | __main__:process_message:102 - Error processing message '{"timestamp": "2025-01-01 15:19:00", "temperature": 78.0}': type String is incompatible with expected type Null
+2025-01-31 16:10:40.776 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:20:00', 'temperature': 78.4}
+2025-01-31 16:10:40.781 | INFO     | __main__:process_message:79 - Processed JSON message: {'timestamp': '2025-01-01 15:20:00', 'temperature': 78.4}
+2025-01-31 16:10:40.781 | ERROR    | __main__:process_message:102 - Error processing message '{"timestamp": "2025-01-01 15:20:00", "temperature": 78.4}': type String is incompatible with expected type Null
+2025-01-31 16:10:45.779 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:21:00', 'temperature': 78.8}
+2025-01-31 16:10:45.783 | INFO     | __main__:process_message:79 - Processed JSON message: {'timestamp': '2025-01-01 15:21:00', 'temperature': 78.8}
+2025-01-31 16:10:45.784 | ERROR    | __main__:process_message:102 - Error processing message '{"timestamp": "2025-01-01 15:21:00", "temperature": 78.8}': type String is incompatible with expected type Null
+2025-01-31 16:10:50.781 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:22:00', 'temperature': 79.2}
+2025-01-31 16:10:50.785 | INFO     | __main__:process_message:79 - Processed JSON message: {'timestamp': '2025-01-01 15:22:00', 'temperature': 79.2}
+2025-01-31 16:10:50.786 | ERROR    | __main__:process_message:102 - Error processing message '{"timestamp": "2025-01-01 15:22:00", "temperature": 79.2}': type String is incompatible with expected type Null
+2025-01-31 16:10:55.783 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:23:00', 'temperature': 79.6}
+2025-01-31 16:11:00.785 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:24:00', 'temperature': 80.0}
+2025-01-31 16:11:05.787 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:25:00', 'temperature': 80.4}
+2025-01-31 16:11:10.790 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:26:00', 'temperature': 80.8}
+2025-01-31 16:11:15.793 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:27:00', 'temperature': 81.2}
+2025-01-31 16:11:20.796 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:28:00', 'temperature': 81.6}
+2025-01-31 16:11:25.798 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:29:00', 'temperature': 82.0}
+2025-01-31 16:11:30.799 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:30:00', 'temperature': 82.4}
+2025-01-31 16:11:35.801 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:31:00', 'temperature': 82.8}
+2025-01-31 16:11:40.803 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:32:00', 'temperature': 83.2}
+2025-01-31 16:11:45.806 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:33:00', 'temperature': 83.6}
+2025-01-31 16:11:50.809 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:34:00', 'temperature': 84.0}
+2025-01-31 16:11:51.936 | INFO     | utils.utils_logger:<module>:38 - Logging to file: logs\project_log.log
+2025-01-31 16:11:55.810 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:35:00', 'temperature': 84.4}
+2025-01-31 16:12:00.813 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:36:00', 'temperature': 84.8}
+2025-01-31 16:12:05.815 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:37:00', 'temperature': 85.2}
+2025-01-31 16:12:10.818 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:38:00', 'temperature': 85.6}
+2025-01-31 16:12:15.819 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:39:00', 'temperature': 86.0}
+2025-01-31 16:12:20.821 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:40:00', 'temperature': 86.4}
+2025-01-31 16:12:25.823 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:41:00', 'temperature': 86.8}
+2025-01-31 16:12:30.825 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:42:00', 'temperature': 87.2}
+2025-01-31 16:12:35.827 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:43:00', 'temperature': 87.6}
+2025-01-31 16:12:40.829 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:44:00', 'temperature': 88.0}
+2025-01-31 16:12:45.832 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:45:00', 'temperature': 88.4}
+2025-01-31 16:12:50.835 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:46:00', 'temperature': 88.8}
+2025-01-31 16:12:53.857 | INFO     | utils.utils_logger:<module>:38 - Logging to file: logs\project_log.log
+2025-01-31 16:12:55.839 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:47:00', 'temperature': 89.2}
+2025-01-31 16:13:00.843 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:48:00', 'temperature': 89.6}
+2025-01-31 16:13:05.847 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:49:00', 'temperature': 90.0}
+2025-01-31 16:13:10.850 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:50:00', 'temperature': 90.4}
+2025-01-31 16:13:15.852 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:51:00', 'temperature': 90.8}
+2025-01-31 16:13:20.856 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:52:00', 'temperature': 91.2}
+2025-01-31 16:13:25.860 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:53:00', 'temperature': 91.6}
+2025-01-31 16:13:30.861 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:54:00', 'temperature': 92.0}
+2025-01-31 16:13:35.863 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:55:00', 'temperature': 92.4}
+2025-01-31 16:13:40.866 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:56:00', 'temperature': 92.8}
+2025-01-31 16:13:45.870 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:57:00', 'temperature': 93.2}
+2025-01-31 16:13:50.873 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:58:00', 'temperature': 93.6}
+2025-01-31 16:13:55.875 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 15:59:00', 'temperature': 94.0}
+2025-01-31 16:14:00.877 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:00:00', 'temperature': 94.4}
+2025-01-31 16:14:05.878 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:01:00', 'temperature': 94.8}
+2025-01-31 16:14:10.881 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:02:00', 'temperature': 95.2}
+2025-01-31 16:14:15.883 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:03:00', 'temperature': 95.6}
+2025-01-31 16:14:20.884 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:04:00', 'temperature': 96.0}
+2025-01-31 16:14:25.886 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:05:00', 'temperature': 96.4}
+2025-01-31 16:14:30.889 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:06:00', 'temperature': 96.8}
+2025-01-31 16:14:35.889 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:07:00', 'temperature': 97.2}
+2025-01-31 16:14:40.893 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:08:00', 'temperature': 97.6}
+2025-01-31 16:14:44.198 | INFO     | utils.utils_logger:<module>:38 - Logging to file: logs\project_log.log
+2025-01-31 16:14:45.895 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:09:00', 'temperature': 98.0}
+2025-01-31 16:14:50.898 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:10:00', 'temperature': 98.4}
+2025-01-31 16:14:55.899 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:11:00', 'temperature': 98.8}
+2025-01-31 16:15:00.901 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:12:00', 'temperature': 99.2}
+2025-01-31 16:15:05.902 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:13:00', 'temperature': 99.6}
+2025-01-31 16:15:10.905 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:14:00', 'temperature': 100.0}
+2025-01-31 16:15:15.908 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:15:00', 'temperature': 100.4}
+2025-01-31 16:15:20.911 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:16:00', 'temperature': 100.8}
+2025-01-31 16:15:25.913 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:17:00', 'temperature': 101.2}
+2025-01-31 16:15:30.915 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:18:00', 'temperature': 101.6}
+2025-01-31 16:15:35.917 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:19:00', 'temperature': 102.0}
+2025-01-31 16:15:40.919 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:20:00', 'temperature': 102.4}
+2025-01-31 16:15:45.924 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:21:00', 'temperature': 102.8}
+2025-01-31 16:15:50.927 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:22:00', 'temperature': 103.2}
+2025-01-31 16:15:55.928 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:23:00', 'temperature': 103.6}
+2025-01-31 16:16:00.930 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:24:00', 'temperature': 104.0}
+2025-01-31 16:16:05.934 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:25:00', 'temperature': 104.4}
+2025-01-31 16:16:10.937 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:26:00', 'temperature': 104.8}
+2025-01-31 16:16:15.939 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:27:00', 'temperature': 105.2}
+2025-01-31 16:16:20.942 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:28:00', 'temperature': 105.6}
+2025-01-31 16:16:25.944 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:29:00', 'temperature': 106.0}
+2025-01-31 16:16:30.947 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:30:00', 'temperature': 106.4}
+2025-01-31 16:16:35.951 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:31:00', 'temperature': 106.8}
+2025-01-31 16:16:40.954 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:32:00', 'temperature': 107.2}
+2025-01-31 16:16:45.957 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:33:00', 'temperature': 107.6}
+2025-01-31 16:16:50.959 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:34:00', 'temperature': 108.0}
+2025-01-31 16:16:55.960 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:35:00', 'temperature': 108.4}
+2025-01-31 16:17:00.962 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:36:00', 'temperature': 108.8}
+2025-01-31 16:17:05.964 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:37:00', 'temperature': 109.2}
+2025-01-31 16:17:10.967 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:38:00', 'temperature': 109.6}
+2025-01-31 16:17:15.971 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:39:00', 'temperature': 110.0}
+2025-01-31 16:17:20.975 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:40:00', 'temperature': 110.4}
+2025-01-31 16:17:25.976 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:41:00', 'temperature': 110.8}
+2025-01-31 16:17:30.980 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:42:00', 'temperature': 111.2}
+2025-01-31 16:17:35.983 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:43:00', 'temperature': 111.6}
+2025-01-31 16:17:40.986 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:44:00', 'temperature': 112.0}
+2025-01-31 16:17:45.989 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:45:00', 'temperature': 112.4}
+2025-01-31 16:17:50.993 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:46:00', 'temperature': 112.8}
+2025-01-31 16:17:55.995 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:47:00', 'temperature': 113.2}
+2025-01-31 16:18:00.999 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:48:00', 'temperature': 113.6}
+2025-01-31 16:18:06.001 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:49:00', 'temperature': 114.0}
+2025-01-31 16:18:11.005 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:50:00', 'temperature': 114.4}
+2025-01-31 16:18:16.008 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:51:00', 'temperature': 114.8}
+2025-01-31 16:18:21.011 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:52:00', 'temperature': 115.2}
+2025-01-31 16:18:26.015 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:53:00', 'temperature': 115.6}
+2025-01-31 16:18:31.018 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:54:00', 'temperature': 116.0}
+2025-01-31 16:18:36.021 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:55:00', 'temperature': 116.4}
+2025-01-31 16:18:41.024 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:56:00', 'temperature': 116.8}
+2025-01-31 16:18:46.026 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:57:00', 'temperature': 117.2}
+2025-01-31 16:18:51.030 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:58:00', 'temperature': 117.6}
+2025-01-31 16:18:56.033 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 16:59:00', 'temperature': 118.0}
+2025-01-31 16:19:01.034 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 17:00:00', 'temperature': 118.4}
+2025-01-31 16:19:06.038 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 17:01:00', 'temperature': 118.8}
+2025-01-31 16:19:11.042 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 17:02:00', 'temperature': 119.2}
+2025-01-31 16:19:16.045 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 17:03:00', 'temperature': 119.6}
+2025-01-31 16:19:21.048 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 17:04:00', 'temperature': 120.0}
+2025-01-31 16:19:26.051 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 17:05:00', 'temperature': 120.4}
+2025-01-31 16:19:31.054 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 17:06:00', 'temperature': 120.8}
+2025-01-31 16:19:36.057 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 17:07:00', 'temperature': 121.2}
+2025-01-31 16:19:41.061 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 17:08:00', 'temperature': 121.6}
+2025-01-31 16:19:46.063 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 17:09:00', 'temperature': 122.0}
+2025-01-31 16:19:51.067 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 17:10:00', 'temperature': 122.4}
+2025-01-31 16:19:56.069 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 17:11:00', 'temperature': 122.8}
+2025-01-31 16:20:01.072 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 17:12:00', 'temperature': 123.2}
+2025-01-31 16:20:06.075 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 17:13:00', 'temperature': 123.6}
+2025-01-31 16:20:07.897 | INFO     | utils.utils_logger:<module>:38 - Logging to file: logs\project_log.log
+2025-01-31 16:20:07.901 | INFO     | __main__:main:117 - START consumer.
+2025-01-31 16:20:07.901 | INFO     | __main__:get_kafka_topic:22 - Kafka topic: smoker_csv
+2025-01-31 16:20:07.901 | INFO     | __main__:get_kafka_consumer_group_id:28 - Kafka consumer group id: smoker_group
+2025-01-31 16:20:07.901 | INFO     | __main__:get_rolling_window_size:40 - Rolling window size: 10
+2025-01-31 16:20:07.901 | INFO     | __main__:main:123 - Consumer: Topic 'smoker_csv' and group 'smoker_group'...
+2025-01-31 16:20:07.901 | INFO     | __main__:main:124 - Rolling window size: 10
+2025-01-31 16:20:07.902 | INFO     | utils.utils_producer:get_kafka_broker_address:50 - Kafka broker address: localhost:9092
+2025-01-31 16:20:07.902 | INFO     | utils.utils_consumer:create_kafka_consumer:44 - Creating Kafka consumer. Topic='smoker_csv' and group ID='smoker_group'.
+2025-01-31 16:20:08.020 | INFO     | utils.utils_consumer:create_kafka_consumer:59 - Kafka consumer created successfully.
+2025-01-31 16:20:08.021 | INFO     | __main__:main:133 - Polling messages from topic 'smoker_csv'...
+2025-01-31 16:20:08.352 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 15:22:00', 'temperature': 79.2}
+2025-01-31 16:20:08.356 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 15:22:00", "temperature": 79.2}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.358 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 15:23:00', 'temperature': 79.6}
+2025-01-31 16:20:08.359 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 15:23:00", "temperature": 79.6}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.361 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 15:24:00', 'temperature': 80.0}
+2025-01-31 16:20:08.361 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 15:24:00", "temperature": 80.0}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.363 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 15:25:00', 'temperature': 80.4}
+2025-01-31 16:20:08.364 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 15:25:00", "temperature": 80.4}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.365 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 15:26:00', 'temperature': 80.8}
+2025-01-31 16:20:08.366 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 15:26:00", "temperature": 80.8}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.368 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 15:27:00', 'temperature': 81.2}
+2025-01-31 16:20:08.368 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 15:27:00", "temperature": 81.2}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.370 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 15:28:00', 'temperature': 81.6}
+2025-01-31 16:20:08.370 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 15:28:00", "temperature": 81.6}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.371 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 15:29:00', 'temperature': 82.0}
+2025-01-31 16:20:08.372 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 15:29:00", "temperature": 82.0}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.373 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 15:30:00', 'temperature': 82.4}
+2025-01-31 16:20:08.374 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 15:30:00", "temperature": 82.4}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.375 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 15:31:00', 'temperature': 82.8}
+2025-01-31 16:20:08.376 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 15:31:00", "temperature": 82.8}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.377 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 15:32:00', 'temperature': 83.2}
+2025-01-31 16:20:08.378 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 15:32:00", "temperature": 83.2}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.379 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 15:33:00', 'temperature': 83.6}
+2025-01-31 16:20:08.380 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 15:33:00", "temperature": 83.6}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.380 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 15:34:00', 'temperature': 84.0}
+2025-01-31 16:20:08.381 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 15:34:00", "temperature": 84.0}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.383 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 15:35:00', 'temperature': 84.4}
+2025-01-31 16:20:08.384 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 15:35:00", "temperature": 84.4}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.385 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 15:36:00', 'temperature': 84.8}
+2025-01-31 16:20:08.386 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 15:36:00", "temperature": 84.8}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.386 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 15:37:00', 'temperature': 85.2}
+2025-01-31 16:20:08.387 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 15:37:00", "temperature": 85.2}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.388 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 15:38:00', 'temperature': 85.6}
+2025-01-31 16:20:08.388 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 15:38:00", "temperature": 85.6}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.390 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 15:39:00', 'temperature': 86.0}
+2025-01-31 16:20:08.390 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 15:39:00", "temperature": 86.0}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.393 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 15:40:00', 'temperature': 86.4}
+2025-01-31 16:20:08.393 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 15:40:00", "temperature": 86.4}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.394 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 15:41:00', 'temperature': 86.8}
+2025-01-31 16:20:08.395 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 15:41:00", "temperature": 86.8}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.396 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 15:42:00', 'temperature': 87.2}
+2025-01-31 16:20:08.396 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 15:42:00", "temperature": 87.2}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.398 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 15:43:00', 'temperature': 87.6}
+2025-01-31 16:20:08.399 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 15:43:00", "temperature": 87.6}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.401 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 15:44:00', 'temperature': 88.0}
+2025-01-31 16:20:08.402 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 15:44:00", "temperature": 88.0}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.403 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 15:45:00', 'temperature': 88.4}
+2025-01-31 16:20:08.404 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 15:45:00", "temperature": 88.4}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.405 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 15:46:00', 'temperature': 88.8}
+2025-01-31 16:20:08.405 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 15:46:00", "temperature": 88.8}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.406 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 15:47:00', 'temperature': 89.2}
+2025-01-31 16:20:08.407 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 15:47:00", "temperature": 89.2}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.409 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 15:48:00', 'temperature': 89.6}
+2025-01-31 16:20:08.410 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 15:48:00", "temperature": 89.6}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.411 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 15:49:00', 'temperature': 90.0}
+2025-01-31 16:20:08.412 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 15:49:00", "temperature": 90.0}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.413 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 15:50:00', 'temperature': 90.4}
+2025-01-31 16:20:08.413 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 15:50:00", "temperature": 90.4}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.415 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 15:51:00', 'temperature': 90.8}
+2025-01-31 16:20:08.416 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 15:51:00", "temperature": 90.8}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.417 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 15:52:00', 'temperature': 91.2}
+2025-01-31 16:20:08.418 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 15:52:00", "temperature": 91.2}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.419 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 15:53:00', 'temperature': 91.6}
+2025-01-31 16:20:08.420 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 15:53:00", "temperature": 91.6}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.421 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 15:54:00', 'temperature': 92.0}
+2025-01-31 16:20:08.422 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 15:54:00", "temperature": 92.0}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.423 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 15:55:00', 'temperature': 92.4}
+2025-01-31 16:20:08.424 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 15:55:00", "temperature": 92.4}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.426 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 15:56:00', 'temperature': 92.8}
+2025-01-31 16:20:08.426 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 15:56:00", "temperature": 92.8}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.427 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 15:57:00', 'temperature': 93.2}
+2025-01-31 16:20:08.428 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 15:57:00", "temperature": 93.2}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.429 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 15:58:00', 'temperature': 93.6}
+2025-01-31 16:20:08.429 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 15:58:00", "temperature": 93.6}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.431 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 15:59:00', 'temperature': 94.0}
+2025-01-31 16:20:08.431 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 15:59:00", "temperature": 94.0}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.432 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:00:00', 'temperature': 94.4}
+2025-01-31 16:20:08.433 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:00:00", "temperature": 94.4}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.433 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:01:00', 'temperature': 94.8}
+2025-01-31 16:20:08.434 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:01:00", "temperature": 94.8}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.434 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:02:00', 'temperature': 95.2}
+2025-01-31 16:20:08.434 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:02:00", "temperature": 95.2}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.435 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:03:00', 'temperature': 95.6}
+2025-01-31 16:20:08.435 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:03:00", "temperature": 95.6}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.436 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:04:00', 'temperature': 96.0}
+2025-01-31 16:20:08.437 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:04:00", "temperature": 96.0}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.438 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:05:00', 'temperature': 96.4}
+2025-01-31 16:20:08.438 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:05:00", "temperature": 96.4}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.439 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:06:00', 'temperature': 96.8}
+2025-01-31 16:20:08.439 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:06:00", "temperature": 96.8}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.440 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:07:00', 'temperature': 97.2}
+2025-01-31 16:20:08.440 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:07:00", "temperature": 97.2}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.442 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:08:00', 'temperature': 97.6}
+2025-01-31 16:20:08.443 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:08:00", "temperature": 97.6}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.444 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:09:00', 'temperature': 98.0}
+2025-01-31 16:20:08.445 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:09:00", "temperature": 98.0}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.446 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:10:00', 'temperature': 98.4}
+2025-01-31 16:20:08.446 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:10:00", "temperature": 98.4}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.447 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:11:00', 'temperature': 98.8}
+2025-01-31 16:20:08.447 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:11:00", "temperature": 98.8}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.448 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:12:00', 'temperature': 99.2}
+2025-01-31 16:20:08.448 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:12:00", "temperature": 99.2}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.449 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:13:00', 'temperature': 99.6}
+2025-01-31 16:20:08.449 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:13:00", "temperature": 99.6}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.450 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:14:00', 'temperature': 100.0}
+2025-01-31 16:20:08.450 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:14:00", "temperature": 100.0}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.451 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:15:00', 'temperature': 100.4}
+2025-01-31 16:20:08.451 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:15:00", "temperature": 100.4}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.452 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:16:00', 'temperature': 100.8}
+2025-01-31 16:20:08.452 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:16:00", "temperature": 100.8}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.453 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:17:00', 'temperature': 101.2}
+2025-01-31 16:20:08.454 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:17:00", "temperature": 101.2}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.455 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:18:00', 'temperature': 101.6}
+2025-01-31 16:20:08.455 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:18:00", "temperature": 101.6}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.456 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:19:00', 'temperature': 102.0}
+2025-01-31 16:20:08.456 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:19:00", "temperature": 102.0}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.457 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:20:00', 'temperature': 102.4}
+2025-01-31 16:20:08.458 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:20:00", "temperature": 102.4}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.460 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:21:00', 'temperature': 102.8}
+2025-01-31 16:20:08.460 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:21:00", "temperature": 102.8}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.462 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:22:00', 'temperature': 103.2}
+2025-01-31 16:20:08.462 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:22:00", "temperature": 103.2}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.463 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:23:00', 'temperature': 103.6}
+2025-01-31 16:20:08.463 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:23:00", "temperature": 103.6}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.464 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:24:00', 'temperature': 104.0}
+2025-01-31 16:20:08.464 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:24:00", "temperature": 104.0}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.465 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:25:00', 'temperature': 104.4}
+2025-01-31 16:20:08.465 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:25:00", "temperature": 104.4}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.466 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:26:00', 'temperature': 104.8}
+2025-01-31 16:20:08.466 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:26:00", "temperature": 104.8}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.467 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:27:00', 'temperature': 105.2}
+2025-01-31 16:20:08.468 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:27:00", "temperature": 105.2}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.468 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:28:00', 'temperature': 105.6}
+2025-01-31 16:20:08.469 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:28:00", "temperature": 105.6}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.469 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:29:00', 'temperature': 106.0}
+2025-01-31 16:20:08.470 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:29:00", "temperature": 106.0}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.470 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:30:00', 'temperature': 106.4}
+2025-01-31 16:20:08.471 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:30:00", "temperature": 106.4}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.471 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:31:00', 'temperature': 106.8}
+2025-01-31 16:20:08.471 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:31:00", "temperature": 106.8}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.472 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:32:00', 'temperature': 107.2}
+2025-01-31 16:20:08.473 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:32:00", "temperature": 107.2}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.474 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:33:00', 'temperature': 107.6}
+2025-01-31 16:20:08.476 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:33:00", "temperature": 107.6}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.477 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:34:00', 'temperature': 108.0}
+2025-01-31 16:20:08.478 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:34:00", "temperature": 108.0}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.479 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:35:00', 'temperature': 108.4}
+2025-01-31 16:20:08.480 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:35:00", "temperature": 108.4}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.480 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:36:00', 'temperature': 108.8}
+2025-01-31 16:20:08.481 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:36:00", "temperature": 108.8}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.482 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:37:00', 'temperature': 109.2}
+2025-01-31 16:20:08.482 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:37:00", "temperature": 109.2}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.483 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:38:00', 'temperature': 109.6}
+2025-01-31 16:20:08.483 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:38:00", "temperature": 109.6}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.484 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:39:00', 'temperature': 110.0}
+2025-01-31 16:20:08.484 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:39:00", "temperature": 110.0}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.485 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:40:00', 'temperature': 110.4}
+2025-01-31 16:20:08.485 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:40:00", "temperature": 110.4}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.486 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:41:00', 'temperature': 110.8}
+2025-01-31 16:20:08.486 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:41:00", "temperature": 110.8}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.487 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:42:00', 'temperature': 111.2}
+2025-01-31 16:20:08.487 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:42:00", "temperature": 111.2}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.488 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:43:00', 'temperature': 111.6}
+2025-01-31 16:20:08.488 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:43:00", "temperature": 111.6}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.523 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:44:00', 'temperature': 112.0}
+2025-01-31 16:20:08.530 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:44:00", "temperature": 112.0}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.531 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:45:00', 'temperature': 112.4}
+2025-01-31 16:20:08.531 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:45:00", "temperature": 112.4}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.532 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:46:00', 'temperature': 112.8}
+2025-01-31 16:20:08.533 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:46:00", "temperature": 112.8}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.533 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:47:00', 'temperature': 113.2}
+2025-01-31 16:20:08.534 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:47:00", "temperature": 113.2}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.534 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:48:00', 'temperature': 113.6}
+2025-01-31 16:20:08.535 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:48:00", "temperature": 113.6}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.536 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:49:00', 'temperature': 114.0}
+2025-01-31 16:20:08.536 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:49:00", "temperature": 114.0}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.543 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:50:00', 'temperature': 114.4}
+2025-01-31 16:20:08.544 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:50:00", "temperature": 114.4}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.546 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:51:00', 'temperature': 114.8}
+2025-01-31 16:20:08.547 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:51:00", "temperature": 114.8}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.547 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:52:00', 'temperature': 115.2}
+2025-01-31 16:20:08.548 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:52:00", "temperature": 115.2}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.548 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:53:00', 'temperature': 115.6}
+2025-01-31 16:20:08.549 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:53:00", "temperature": 115.6}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.551 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:54:00', 'temperature': 116.0}
+2025-01-31 16:20:08.552 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:54:00", "temperature": 116.0}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.553 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:55:00', 'temperature': 116.4}
+2025-01-31 16:20:08.553 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:55:00", "temperature": 116.4}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.554 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:56:00', 'temperature': 116.8}
+2025-01-31 16:20:08.554 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:56:00", "temperature": 116.8}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.555 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:57:00', 'temperature': 117.2}
+2025-01-31 16:20:08.555 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:57:00", "temperature": 117.2}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.556 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:58:00', 'temperature': 117.6}
+2025-01-31 16:20:08.556 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:58:00", "temperature": 117.6}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.557 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 16:59:00', 'temperature': 118.0}
+2025-01-31 16:20:08.557 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 16:59:00", "temperature": 118.0}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.559 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 17:00:00', 'temperature': 118.4}
+2025-01-31 16:20:08.559 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 17:00:00", "temperature": 118.4}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.560 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 17:01:00', 'temperature': 118.8}
+2025-01-31 16:20:08.561 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 17:01:00", "temperature": 118.8}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.561 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 17:02:00', 'temperature': 119.2}
+2025-01-31 16:20:08.562 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 17:02:00", "temperature": 119.2}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.563 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 17:03:00', 'temperature': 119.6}
+2025-01-31 16:20:08.564 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 17:03:00", "temperature": 119.6}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.566 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 17:04:00', 'temperature': 120.0}
+2025-01-31 16:20:08.566 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 17:04:00", "temperature": 120.0}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.567 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 17:05:00', 'temperature': 120.4}
+2025-01-31 16:20:08.568 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 17:05:00", "temperature": 120.4}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.568 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 17:06:00', 'temperature': 120.8}
+2025-01-31 16:20:08.569 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 17:06:00", "temperature": 120.8}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.569 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 17:07:00', 'temperature': 121.2}
+2025-01-31 16:20:08.569 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 17:07:00", "temperature": 121.2}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.570 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 17:08:00', 'temperature': 121.6}
+2025-01-31 16:20:08.571 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 17:08:00", "temperature": 121.6}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.572 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 17:09:00', 'temperature': 122.0}
+2025-01-31 16:20:08.572 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 17:09:00", "temperature": 122.0}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.572 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 17:10:00', 'temperature': 122.4}
+2025-01-31 16:20:08.573 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 17:10:00", "temperature": 122.4}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.574 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 17:11:00', 'temperature': 122.8}
+2025-01-31 16:20:08.575 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 17:11:00", "temperature": 122.8}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.576 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 17:12:00', 'temperature': 123.2}
+2025-01-31 16:20:08.577 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 17:12:00", "temperature": 123.2}': type String is incompatible with expected type Null
+2025-01-31 16:20:08.578 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 17:13:00', 'temperature': 123.6}
+2025-01-31 16:20:08.579 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 17:13:00", "temperature": 123.6}': type String is incompatible with expected type Null
+2025-01-31 16:20:11.078 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 17:14:00', 'temperature': 124.0}
+2025-01-31 16:20:11.083 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 17:14:00', 'temperature': 124.0}
+2025-01-31 16:20:11.083 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 17:14:00", "temperature": 124.0}': type String is incompatible with expected type Null
+2025-01-31 16:20:16.082 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 17:15:00', 'temperature': 124.4}
+2025-01-31 16:20:16.088 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 17:15:00', 'temperature': 124.4}
+2025-01-31 16:20:16.089 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 17:15:00", "temperature": 124.4}': type String is incompatible with expected type Null
+2025-01-31 16:20:21.085 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 17:16:00', 'temperature': 124.8}
+2025-01-31 16:20:21.090 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 17:16:00', 'temperature': 124.8}
+2025-01-31 16:20:21.090 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 17:16:00", "temperature": 124.8}': type String is incompatible with expected type Null
+2025-01-31 16:20:26.086 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 17:17:00', 'temperature': 125.2}
+2025-01-31 16:20:26.090 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 17:17:00', 'temperature': 125.2}
+2025-01-31 16:20:26.091 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 17:17:00", "temperature": 125.2}': type String is incompatible with expected type Null
+2025-01-31 16:20:31.089 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 17:18:00', 'temperature': 125.6}
+2025-01-31 16:20:31.094 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 17:18:00', 'temperature': 125.6}
+2025-01-31 16:20:31.095 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 17:18:00", "temperature": 125.6}': type String is incompatible with expected type Null
+2025-01-31 16:20:36.091 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 17:19:00', 'temperature': 126.0}
+2025-01-31 16:20:36.096 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 17:19:00', 'temperature': 126.0}
+2025-01-31 16:20:36.097 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 17:19:00", "temperature": 126.0}': type String is incompatible with expected type Null
+2025-01-31 16:20:41.096 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 17:20:00', 'temperature': 126.4}
+2025-01-31 16:20:41.100 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 17:20:00', 'temperature': 126.4}
+2025-01-31 16:20:41.101 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 17:20:00", "temperature": 126.4}': type String is incompatible with expected type Null
+2025-01-31 16:20:46.098 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 17:21:00', 'temperature': 126.8}
+2025-01-31 16:20:46.102 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 17:21:00', 'temperature': 126.8}
+2025-01-31 16:20:46.103 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 17:21:00", "temperature": 126.8}': type String is incompatible with expected type Null
+2025-01-31 16:20:51.099 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 17:22:00', 'temperature': 127.2}
+2025-01-31 16:20:51.104 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 17:22:00', 'temperature': 127.2}
+2025-01-31 16:20:51.105 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 17:22:00", "temperature": 127.2}': type String is incompatible with expected type Null
+2025-01-31 16:20:56.103 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 17:23:00', 'temperature': 127.6}
+2025-01-31 16:20:56.109 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 17:23:00', 'temperature': 127.6}
+2025-01-31 16:20:56.109 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 17:23:00", "temperature": 127.6}': type String is incompatible with expected type Null
+2025-01-31 16:21:01.106 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 17:24:00', 'temperature': 128.0}
+2025-01-31 16:21:01.111 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 17:24:00', 'temperature': 128.0}
+2025-01-31 16:21:01.111 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 17:24:00", "temperature": 128.0}': type String is incompatible with expected type Null
+2025-01-31 16:21:06.110 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 17:25:00', 'temperature': 128.4}
+2025-01-31 16:21:06.115 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 17:25:00', 'temperature': 128.4}
+2025-01-31 16:21:06.115 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 17:25:00", "temperature": 128.4}': type String is incompatible with expected type Null
+2025-01-31 16:21:11.111 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 17:26:00', 'temperature': 128.8}
+2025-01-31 16:21:11.115 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 17:26:00', 'temperature': 128.8}
+2025-01-31 16:21:11.115 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 17:26:00", "temperature": 128.8}': type String is incompatible with expected type Null
+2025-01-31 16:21:16.114 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 17:27:00', 'temperature': 129.2}
+2025-01-31 16:21:16.121 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 17:27:00', 'temperature': 129.2}
+2025-01-31 16:21:16.121 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 17:27:00", "temperature": 129.2}': type String is incompatible with expected type Null
+2025-01-31 16:21:21.119 | INFO     | __main__:main:105 - Sent message to topic 'smoker_csv': {'timestamp': '2025-01-01 17:28:00', 'temperature': 129.6}
+2025-01-31 16:21:21.229 | INFO     | __main__:process_message:85 - Processed JSON message: {'timestamp': '2025-01-01 17:28:00', 'temperature': 129.6}
+2025-01-31 16:21:21.229 | ERROR    | __main__:process_message:110 - Error processing message '{"timestamp": "2025-01-01 17:28:00", "temperature": 129.6}': type String is incompatible with expected type Null

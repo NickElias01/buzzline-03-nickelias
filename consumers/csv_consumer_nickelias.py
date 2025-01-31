@@ -9,6 +9,12 @@ from utils.utils_logger import logger
 # Load environment variables from .env
 load_dotenv()
 
+schema = {
+    "timestamp": pl.Utf8,  # Ensure timestamp is treated as a string
+    "temperature": pl.Float64,  # Ensure temperature is treated as a float
+}
+
+
 # Fetch .env variables
 def get_kafka_topic() -> str:
     """Fetch Kafka topic from environment or use default."""
@@ -69,7 +75,7 @@ def detect_stall(rolling_window: deque) -> bool:
     logger.debug(f"Temperature range: {temp_range}°F. Stalled: {is_stalled}")
     return is_stalled
 
-def process_message(message: str, rolling_window: deque, window_size: int, df: pl.DataFrame) -> None:
+def process_message(message: str, rolling_window: deque, window_size: int, df: pl.DataFrame) -> pl.DataFrame:
     """Process a single message and check for stalls or temperature alerts."""
     try:
         logger.debug(f"Raw message: {message}")
@@ -80,26 +86,31 @@ def process_message(message: str, rolling_window: deque, window_size: int, df: p
 
         if temperature is None or timestamp is None:
             logger.error(f"Invalid message format: {message}")
-            return
+            return df  # Return the unmodified DataFrame
 
         # Add the new temperature reading to the rolling window
         rolling_window.append(temperature)
 
         # Append the new reading to the Polars DataFrame
-        new_row = pl.DataFrame({"timestamp": [timestamp], "temperature": [temperature]})
-        df = df.vstack(new_row)
+        new_row = pl.DataFrame({"timestamp": [str(timestamp)], "temperature": [float(temperature)]})
+        df = df.vstack(new_row)  # Create a new DataFrame with the added row
 
         # Check for a stall
         if detect_stall(rolling_window):
             logger.info(f"STALL DETECTED at {timestamp}: Temp stable at {temperature}°F over last {window_size} readings.")
 
-        # Check for temperature alerts (e.g., drop, ready, overcooked)
+        # Check for temperature alerts
         check_temperature_alerts(df)
+
+        return df  # Return the updated DataFrame
 
     except json.JSONDecodeError as e:
         logger.error(f"JSON decoding error for message '{message}': {e}")
     except Exception as e:
         logger.error(f"Error processing message '{message}': {e}")
+
+    return df  # Ensure function always returns a DataFrame
+
 
 def main() -> None:
     """Main entry point for the consumer."""
@@ -113,7 +124,10 @@ def main() -> None:
     logger.info(f"Rolling window size: {window_size}")
 
     rolling_window = deque(maxlen=window_size)
-    df = pl.DataFrame({"timestamp": [], "temperature": []})
+    df = pl.DataFrame(
+    {"timestamp": [], "temperature": []}, 
+    schema={"timestamp": pl.Utf8, "temperature": pl.Float64}  # Explicit schema
+)
 
     # Create the Kafka consumer using the utility function
     consumer = create_kafka_consumer(topic, group_id)
@@ -124,7 +138,8 @@ def main() -> None:
         for message in consumer:
             message_str = message.value
             logger.debug(f"Received message at offset {message.offset}: {message_str}")
-            process_message(message_str, rolling_window, window_size, df)
+            df = process_message(message_str, rolling_window, window_size, df)  # Update df
+
     except KeyboardInterrupt:
         logger.warning("Consumer interrupted by user.")
     except Exception as e:
