@@ -1,4 +1,4 @@
-# buzzline-03-case
+# buzzline-03-nickelias
 
 Streaming data does not have to be simple text.
 Many of us are familiar with streaming video content and audio (e.g. music) files. 
@@ -8,6 +8,24 @@ semi-structured (e.g. json data).
 
 We'll work with two different types of data, and so we'll use two different Kafka topic names. 
 See [.env](.env). 
+
+
+## Starting Zookeeper and Kafka:
+### Zookeeper - Terminal 1
+```shell
+wsl
+cd ~/kafka
+bin/zookeeper-server-start.sh config/zookeeper.properties
+```
+
+### Kafka - Terminal 2
+```shell
+wsl
+cd ~/kafka
+bin/kafka-server-start.sh config/server.properties
+```
+
+
 
 
 ## Task 1. Use Tools from Module 1 and 2
